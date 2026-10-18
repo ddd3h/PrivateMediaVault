@@ -1,0 +1,39 @@
+appId: com.private.mediavault
+productName: Private Media Vault
+copyright: Private
+
+directories:
+  output: release
+
+files:
+  - dist/renderer/**
+  - dist-electron/**
+  - node_modules/**
+  - "!node_modules/**/*.{md,txt,ts,map}"
+  - "!node_modules/**/test/**"
+  - "!node_modules/**/tests/**"
+  - "!node_modules/**/__tests__/**"
+
+# Bundle ffmpeg/ffprobe into app Resources
+extraResources:
+  - from: resources/bin/ffmpeg
+    to: bin/ffmpeg
+  - from: resources/bin/ffprobe
+    to: bin/ffprobe
+
+# better-sqlite3 native module must be outside asar
+asarUnpack:
+  - "node_modules/better-sqlite3/**/*"
+  - "node_modules/bindings/**/*"
+  - "node_modules/file-uri-to-path/**/*"
+
+mac:
+  icon: resources/icon.icns
+  category: public.app-category.photography
+  target:
+    - target: dmg
+      arch: [arm64]
+  darkModeSupport: true
+  extendInfo:
+    NSRecentDocumentsLimit: 0
+    NSDocumentsFolderUsageDescription: "Access encrypted vault volume"

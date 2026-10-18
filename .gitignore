@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-electron/
+*.log
+.DS_Store
+settings.json
+release/
+resources/bin/ffmpeg
+resources/bin/ffprobe
+.claude/settings.local.json
